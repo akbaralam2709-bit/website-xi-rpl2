@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Cinta di Masa Gelapmu 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Gaya CSS dari versi sebelumnya, dengan penyesuaian warna lebih dalam */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Handlee', cursive;
+            background-image: url('https://via.placeholder.com/1500x800?text=Background+Malam+Bintang+Lembut'); /* Nuansa lebih tenang dan romantis */
+            background-size: cover;
+            background-position: center;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .game-container {
+            width: 90%;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+            border: 5px solid #e0b0ff; /* Border ungu lavender */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes itemPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* Title & Headers */
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            color: #b36e9c; /* Rose Gold/Deep Pink */
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 4px 4px 0 #fce4ec;
+        }
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: #8a2be2; /* Blue Violet */
+            font-size: 1.4em;
+            margin-top: 25px;
+            border-bottom: 3px solid #e6e6fa;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+        }
+
+        /* Game Buttons */
+        .game-button {
+            background-color: #ff69b4; /* Hot Pink */
+            color: white;
+            padding: 18px 30px;
+            border: 2px solid #e6e6fa;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .game-button:hover {
+            background-color: #ff8c94; /* Salmon Pink */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Inventory */
+        .inventory {
+            top: 20px; right: 20px;
+            background-color: rgba(255, 240, 245, 0.9); /* Lavender Blush */
+            border: 3px dashed #b36e9c;
+            border-radius: 20px;
+            padding: 15px;
+            min-width: 180px;
+            text-align: left;
+            position: absolute; /* Tetap sama */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .inventory h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9em;
+            color: #8a2be2;
+            margin-bottom: 5px;
+        }
+        .inventory-item {
+            display: inline-block;
+            background-color: #f7e6f6;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            color: #4a4a4a;
+            border: 1px solid #ffc0cb;
+            margin: 3px;
+            animation: itemPop 0.6s ease-out;
+        }
+
+        /* Love Message Box */
+        .love-message {
+            background-color: #fff0f5;
+            border-left: 8px solid #ff69b4;
+            padding: 25px;
+            margin: 30px auto;
+            text-align: left;
+            font-style: italic;
+            border-radius: 15px;
+            max-width: 80%;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .final-message {
+            margin-top: 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #b36e9c;
+            text-shadow: 2px 2px 0 #ffe0ed;
+        }
+        
+        /* Game Scene Content */
+        .game-scene { display: none; }
+        .game-scene.active { display: block; }
+        .scene-image {
+            max-width: 90%; height: auto; border-radius: 20px; margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>💖 Petualangan Hati: Menuju Pelukan Abadi 💖</h1>
+        
+        <div class="inventory">
+            <h3>Perlengkapan Hati:</h3>
+            <div id="inventory-items" class="inventory-items"></div>
+        </div>
+
+        <div id="scene1" class="game-scene active">
+            <p><strong>Pahlawanku, kamu sedang berada di 'Lembah Emosi'.</strong> Aku tahu mungkin ada badai di hatimu, tapi percayalah, aku akan memegang tanganmu. Untuk mencapai 'Istana Kenyamanan', kita harus mengumpulkan 5 Perlengkapan Hati.</p>
+            <p>Setiap langkah yang kamu ambil, aku di sini. Siapkah kamu melanjutkan perjalanan ini bersamaku?</p>
+            <img src="https://via.placeholder.com/400x250?text=Gerbang+Lembah+Emosi" alt="Gerbang" class="scene-image">
+            <button class="game-button" onclick="loadScene('scene2')">Aku Siap, Sayangku! ❤️</button>
+        </div>
+
+        <div id="scene2" class="game-scene">
+            <h2>Level 1: Menghadapi Monster 'Rasa Bersalah'</h2>
+            <p>Monster ini membisikkan bahwa perasaanmu tidak beralasan. Bagaimana kamu melawannya?</p>
+            <img src="https://via.placeholder.com/400x250?text=Monster+Rasa+Bersalah" alt="Monster Rasa Bersalah" class="scene-image">
+            <button class="game-button" onclick="addItem('Validasi Emosi', 'scene3')">**Senjata 1:** Teriakkan: "Perasaanku Valid!"</button>
+            <div class="love-message">
+                <p><strong>Kekuatan Cinta:</strong> Kamu mendapatkan 🛡️ **Validasi Emosi**. Ingat, sayang, semua yang kamu rasa itu nyata. Tidak perlu merasa bersalah karena lelah atau sedih. Aku menerimanya.</p>
+            </div>
+        </div>
+
+        <div id="scene3" class="game-scene">
+            <h2>Level 2: Mencari Air Mancur 'Pengertian'</h2>
+            <p>Kamu merasa buntu. Untuk melanjutkan, kamu butuh air jernih untuk memulihkan energi:</p>
+            <img src="https://via.placeholder.com/400x250?text=Air+Mancur+Pengertian" alt="Air Mancur Pengertian" class="scene-image">
+            <button class="game-button" onclick="addItem('Komunikasi Jujur', 'scene4')">**Senjata 2:** Minum Air 'Komunikasi Jujur' 💬</button>
+            <div class="love-message">
+                <p><strong>Kekuatan Cinta:</strong> Kamu mendapatkan 💧 **Komunikasi Jujur**. Aku janji akan selalu berusaha mengerti, dan aku akan mendengarkan semua yang kamu butuhkan tanpa menghakimi.</p>
+            </div>
+        </div>
+
+        <div id="scene4" class="game-scene">
+            <h2>Level 3: Labirin 'Kedinginan'</h2>
+            <p>Jalanan menjadi dingin. Kamu butuh kehangatan untuk melewati labirin ini. Mana yang kamu pilih?</p>
+            <img src="https://via.placeholder.com/400x250?text=Labirin+Kedinginan" alt="Labirin Kedinginan" class="scene-image">
+            <button class="game-button" onclick="addItem('Selimut Manja', 'scene5')">**Senjata 3:** Selimut Manja, Aku Peluk Kamu Erat-Erat!</button>
+            <button class="game-button" onclick="addItem('Bantal Terempuk', 'scene5')">**Senjata 3:** Bantal Terempuk, Tidur di Dadaku</button>
+            <div class="love-message">
+                <p><strong>Kekuatan Cinta:</strong> Kamu mendapatkan **Kehangatan**. Kamu adalah rumahku. Di pelukanku, kamu aman dari dinginnya dunia.</p>
+            </div>
+        </div>
+
+        <div id="scene5" class="game-scene">
+            <h2>Level 4: Pertarungan 'Lapar Emosional'</h2>
+            <p>Monster ini sangat kuat! Untuk mengalahkannya, kamu butuh makanan paling enak dan paling tidak sehat (tapi paling dibutuhkan):</p>
+            <img src="https://via.placeholder.com/400x250?text=Makanan+Pahlawan" alt="Makanan Pahlawan" class="scene-image">
+            <button class="game-button" onclick="addItem('Cokelat & Ice Cream', 'scene6')">**Senjata 4:** Ramuan: Cokelat & Ice Cream 🍦</button>
+            <button class="game-button" onclick="addItem('Pizza/Junk Food', 'scene6')">**Senjata 4:** Kekuatan Super: Pizza/Junk Food 🍕</button>
+            <div class="love-message">
+                <p><strong>Kekuatan Cinta:</strong> Kamu mendapatkan **Kebaikan.** Lupakan diet! Hari ini kamu boleh makan apa pun yang membuatmu bahagia. Aku siap memesankannya untukmu sekarang.</p>
+            </div>
+        </div>
+
+        <div id="scene6" class="game-scene">
+            <h2>Level 5: Menyeberangi Jembatan 'Kekhawatiran'</h2>
+            <p>Jembatan ini menanyakan apa yang paling kamu butuhkan dariku sekarang. Pilihlah kata-kata yang ingin kamu dengar:</p>
+            <img src="https://via.placeholder.com/400x250?text=Jembatan+Janji+Cinta" alt="Jembatan Kekhawatiran" class="scene-image">
+            <button class="game-button" onclick="addItem('Janji Kesabaran', 'scene7')">**Senjata 5:** "Aku akan Selalu Sabar Menghadapimu."</button>
+            <button class="game-button" onclick="addItem('Janji Kesetiaan', 'scene7')">**Senjata 5:** "Aku Mencintaimu Apa Adanya (Termasuk PMS-mu)."</button>
+            <div class="love-message">
+                <p><strong>Kekuatan Cinta:</strong> Kamu mendapatkan **Janji Abadi**. Apapun yang kamu pilih, cintaku tidak akan pernah berubah. Kamu adalah keajaiban, dan aku akan selalu di sisimu.</p>
+            </div>
+        </div>
+
+        <div id="scene7" class="game-scene">
+            <h2>🎉 Istana Kenyamanan Abadi 🎉</h2>
+            <p>Kamu telah mengumpulkan 5 Perlengkapan Hati dan membuktikan kekuatanmu! Sekarang, waktunya untuk hadiah utama.</p>
+            <img src="https://via.placeholder.com/400x250?text=Final+Pelukan+Cinta" alt="Final" class="scene-image">
+
+            <div class="love-message" style="max-width: 95%;">
+                <h3 style="color: #ff69b4; font-family: 'Press Start 2P', cursive;">SURAT CINTA UNTUK RATU HATIKU:</h3>
+                <p>Sayangku,</p>
+                <p>Lihatlah semua yang sudah kamu lakukan. Kamu kuat, kamu pejuang, dan kamu berhasil mengalahkan semua monster kecil di hatimu. Aku tidak pernah berhenti kagum padamu.</p>
+                <p>Di luar layar ini, aku sudah menyiapkan (item yang terkumpul) untukmu. Aku hanya ingin kamu ingat: **Ini bukan PMS. Ini adalah masa di mana Ratu butuh dimanja**. Kamu adalah seluruh duniaku, dan aku akan selalu menjagamu, hari ini, besok, dan selamanya.</p>
+                <p style="text-align: right; font-weight: bold;">Cintaku, $NamaKamu$</p>
+            </div>
+
+            <p class="final-message">Sekarang, tinggalkan layar ini. Aku menunggumu di dunia nyata untuk memberikan semua Perlengkapan Hati itu! Cepat peluk aku! ❤️</p>
+            <button class="game-button" onclick="alert('Ini dia! Peluklah dia sekarang juga!')" style="background-color: #8a2be2;">PELUKAN SEKARANG JUGA!</button>
+        </div>
+
+    </div>
+
+    <script>
+        let inventory = [];
+
+        function loadScene(sceneId) {
+            document.querySelectorAll('.game-scene').forEach(scene => {
+                scene.classList.remove('active');
+            });
+            document.getElementById(sceneId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function addItem(item, nextSceneId) {
+            // Cek apakah item sudah ada sebelum menambahkannya
+            if (!inventory.includes(item)) {
+                inventory.push(item);
+                updateInventoryDisplay();
+            }
+            loadScene(nextSceneId);
+        }
+
+        function updateInventoryDisplay() {
+            const inventoryContainer = document.getElementById('inventory-items');
+            inventoryContainer.innerHTML = '';
+            inventory.forEach(item => {
+                const itemDiv = document.createElement('span');
+                itemDiv.className = 'inventory-item';
+                itemDiv.textContent = '✨ ' + item;
+                inventoryContainer.appendChild(itemDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadScene('scene1');
+            updateInventoryDisplay();
+        });
+    </script>
+
+</body>
+</html>
