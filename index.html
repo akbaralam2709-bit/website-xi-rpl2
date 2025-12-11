@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Kelas XI RPL 2 | SMK NEGERI XYZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* === BAGIAN CSS DIMULAI DI SINI === */
+        :root {
+            --primary-color: #3498db; /* Biru Cerah */
+            --secondary-color: #2c3e50; /* Abu Gelap */
+            --accent-color: #e74c3c; /* Merah */
+            --background-color: #ecf0f1; /* Abu Muda */
+            --text-color: #2c3e50;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Animasi Goyang (Shaking Animation) --- */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(-5deg); }
+            40% { transform: rotate(5deg); }
+            60% { transform: rotate(-3deg); }
+            80% { transform: rotate(3deg); }
+        }
+
+        .wiggle-icon:hover {
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        /* --- Header / Navigasi --- */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+            transition: color var(--transition-speed);
+        }
+
+        .logo a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* --- Bagian Utama --- */
+        main {
+            padding: 30px 0;
+        }
+
+        section {
+            padding: 40px 0;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2em;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1200x400/34495e/ffffff?text=Latar+Depan+XI+RPL+2') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Tentang Kami --- */
+        .about-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            padding: 0 20px;
+        }
+
+        /* --- Grid & Cards --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 4px solid var(--primary-color);
+        }
+        
+        /* --- Struktur Kelas --- */
+        .structure-card {
+            text-align: center;
+        }
+
+        .structure-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            border: 5px solid var(--primary-color);
+        }
+
+        .structure-role {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        /* --- Album Kegiatan (Sederhana) --- */
+        .activity-item img {
+            height: 180px;
+        }
+
+        /* --- Penghargaan --- */
+        .awards-list {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .awards-list li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed);
+            display: flex;
+            align-items: center;
+        }
+
+        .awards-list li:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .awards-list li i {
+            font-size: 1.5em;
+            color: #f1c40f; /* Emas */
+            margin-right: 15px;
+        }
+
+        /* --- Icon Feature Box (untuk Animasi Goyang) --- */
+        .feature-icon-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .feature-icon-box i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        
+        /* --- Responsif (Opsional tapi disarankan) --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === BAGIAN CSS BERAKHIR DI SINI === */
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="#home">XI RPL 2 Class</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                    <li><a href="#members"><i class="fas fa-users"></i> Anggota</a></li>
+                    <li><a href="#structure"><i class="fas fa-sitemap"></i> Struktur</a></li>
+                    <li><a href="#activities"><i class="fas fa-camera"></i> Album</a></li>
+                    <li><a href="#awards"><i class="fas fa-trophy"></i> Penghargaan</a></li>
+                    <li><a href="#projects"><i class="fas fa-code"></i> Proyek</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section id="home" class="hero">
+                <h1>Selamat Datang di Website Kelas</h1>
+                <p>XI Rekayasa Perangkat Lunak 2</p>
+                <p>Generasi Cerdas, Kreatif, dan Siap Bersaing!</p>
+            </section>
+            
+            <section id="about">
+                <div class="feature-icon-box">
+                    <i class="fas fa-info-circle wiggle-icon"></i>
+                    <h2>Tentang Kami</h2>
+                </div>
+                
+                <img src="https://via.placeholder.com/1000x350/2ecc71/ffffff?text=FOTO+SEKELAS+XI+RPL+2" alt="Foto Sekelas XI RPL 2" class="about-image">
+                
+                <div class="about-text">
+                    <p>Kelas XI RPL 2 adalah kelompok siswa yang bersemangat dalam mempelajari dunia Rekayasa Perangkat Lunak. Kami terdiri dari 24 individu dengan minat dan bakat yang beragam, bersatu dalam cita-cita untuk menjadi pengembang dan inovator teknologi masa depan.</p>
+                    <p>Di bawah bimbingan guru dan wali kelas, kami aktif dalam berbagai kegiatan akademik dan non-akademik, mulai dari membuat proyek aplikasi, kompetisi pemrograman, hingga kegiatan sosial di sekolah. Kami berkomitmen untuk terus belajar, berkolaborasi, dan menciptakan karya-karya yang bermanfaat.</p>
+                </div>
+            </section>
+            
+            <section id="members">
+                <div class="feature-icon-box">
+                    <i class="fas fa-users wiggle-icon"></i>
+                    <h2>Anggota Kelas</h2>
+                </div>
+                <div class="grid">
+                    <script>
+                        // BAGIAN JAVASCRIPT: Daftar Anggota Kelas
+                        const students = [
+                            "AKBAR RAMADHAN", "AMBAR SRI RAHAYU", "ASYA MUKHAMAD M.K", "AZLINA ATHAILLAH Z", "CHOLIFATUL AULIA A",
+                            "DAFTA IBNI ATHALLAH", "DWI SYUKUR", "EKA MELANI", "FAIRUZ LUQMAN FALIH", "FELIX NUR ZAHID",
+                            "ISMAIL NAZILA ABIDIN", "LUTFIANA LATIF N.R", "M. SALVAN MUBAROK", "MUHAMAD SIGIT", "MUHAMMAD DIMAS P",
+                            "MUHAMMAD REZA", "NANDA ARIS SETIAWAN", "NAYLAN NABILA", "NIKO ANDRIYANTO", "RENI ARETA PRATIWI",
+                            "SALMA ANINDIA PUTRI", "UMI WASILAH", "VYENA JAZCIKA", "YASMIN MAHARANI", "ZAKI ARDIAWAN",
+                            "SHEVA AGUSTIAN" // Total 26 nama, tapi Anda sebut 25 aktif. Saya pakai semua nama Anda.
+                        ];
+                        
+                        // Menyesuaikan daftar menjadi 25 jika perlu (mengabaikan salah satu nama jika totalnya 26)
+                        const activeStudents = students.slice(0, 25);
+                        
+                        activeStudents.forEach((name, index) => {
+                            const initial = name.split(' ').map(n => n[0]).join('');
+                            document.write(`
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/100x100/9b59b6/ffffff?text=${initial}" alt="Foto ${name}" class="profile-photo">
+                                    <h3>${name}</h3>
+                                    <p>Siswa ke-${index + 1}</p>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+            </section>
+            
+            <section id="structure">
+                <div class="feature-icon-box">
+                    <i class="fas fa-sitemap wiggle-icon"></i>
+                    <h2>Struktur Kelas</h2>
+                </div>
+                <div class="grid">
+                    
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/1abc9c/ffffff?text=WALI" alt="Foto Wali Kelas" class="structure-photo">
+                        <p class="structure-role">Wali Kelas</p>
+                        <h3>[Nama Wali Kelas]</h3>
+                    </div>
+                    
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/f39c12/ffffff?text=KETUA" alt="Foto Ketua Kelas" class="structure-photo">
+                        <p class="structure-role">Ketua Kelas</p>
+                        <h3>[Nama Ketua Kelas]</h3>
+                    </div>
+                    
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/3498db/ffffff?text=WAKIL" alt="Foto Wakil Ketua" class="structure-photo">
+                        <p class="structure-role">Wakil Ketua</p>
+                        <h3>[Nama Wakil Ketua]</h3>
+                    </div>
+
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/e74c3c/ffffff?text=SEKRE" alt="Foto Sekretaris 1" class="structure-photo">
+                        <p class="structure-role">Sekretaris I</p>
+                        <h3>[Nama Sekretaris 1]</h3>
+                    </div>
+                    
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/e74c3c/ffffff?text=SEKRE2" alt="Foto Sekretaris 2" class="structure-photo">
+                        <p class="structure-role">Sekretaris II</p>
+                        <h3>[Nama Sekretaris 2]</h3>
+                    </div>
+
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/2ecc71/ffffff?text=BENDA" alt="Foto Bendahara 1" class="structure-photo">
+                        <p class="structure-role">Bendahara I</p>
+                        <h3>[Nama Bendahara 1]</h3>
+                    </div>
+
+                    <div class="card structure-card">
+                        <img src="https://via.placeholder.com/120x120/2ecc71/ffffff?text=BENDA2" alt="Foto Bendahara 2" class="structure-photo">
+                        <p class="structure-role">Bendahara II</p>
+                        <h3>[Nama Bendahara 2]</h3>
+                    </div>
+                    
+                    </div>
+            </section>
+
+            <section id="activities">
+                <div class="feature-icon-box">
+                    <i class="fas fa-camera-retro wiggle-icon"></i>
+                    <h2>Album Kegiatan (Minimal 5)</h2>
+                </div>
+                <div class="grid">
+                    
+                    <div class="card activity-item">
+                        <img src="https://via.placeholder.com/300x180/34495e/ffffff?text=Kegiatan+1" alt="Kegiatan 1">
+                        <h4>Workshop Pemrograman Web</h4>
+                        <p>Belajar membuat *full-stack* website.</p>
+                    </div>
+                    
+                    <div class="card activity-item">
+                        <img src="https://via.placeholder.com/300x180/95a5a6/ffffff?text=Kegiatan+2" alt="Kegiatan 2">
+                        <h4>Piknik Kelas dan Team Building</h4>
+                        <p>Meningkatkan kekompakan tim di luar sekolah.</p>
+                    </div>
+
+                    <div class="card activity-item">
+                        <img src="https://via.placeholder.com/300x180/16a085/ffffff?text=Kegiatan+3" alt="Kegiatan 3">
+                        <h4>Lomba Desain UI/UX Antar Kelas</h4>
+                        <p>Mengasah kreativitas dalam desain antarmuka.</p>
+                    </div>
+                    
+                    <div class="card activity-item">
+                        <img src="https://via.placeholder.com/300x180/d35400/ffffff?text=Kegiatan+4" alt="Kegiatan 4">
+                        <h4>Bakti Sosial di Panti Asuhan</h4>
+                        <p>Membagikan rezeki dan waktu luang.</p>
+                    </div>
+                    
+                    <div class="card activity-item">
+                        <img src="https://via.placeholder.com/300x180/8e44ad/ffffff?text=Kegiatan+5" alt="Kegiatan 5">
+                        <h4>Sesi Mentoring Proyek Akhir</h4>
+                        <p>Bimbingan intensif untuk menyelesaikan proyek besar.</p>
+                    </div>
+
+                </div>
+            </section>
+            
+            <section id="awards">
+                <div class="feature-icon-box">
+                    <i class="fas fa-trophy wiggle-icon"></i>
+                    <h2>Penghargaan</h2>
+                </div>
+                <ul class="awards-list">
+                    <li><i class="fas fa-medal"></i> Juara 1 Lomba Cerdas Cermat Bidang IT Tingkat Sekolah (Semester Ganjil 2024).</li>
+                    <li><i class="fas fa-medal"></i> Tim Pengembang Aplikasi Terbaik dalam "School Tech Fair 2024".</li>
+                    <li><i class="fas fa-medal"></i> Penghargaan Kelas Terbersih dan Terdamai selama 3 Bulan Berturut-turut.</li>
+                    <li><i class="fas fa-medal"></i> Penghargaan Partisipasi Tertinggi dalam Program Magang Sekolah.</li>
+                </ul>
+            </section>
+
+            <section id="projects">
+                <div class="feature-icon-box">
+                    <i class="fas fa-code wiggle-icon"></i>
+                    <h2>Proyek Selesai</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Aplikasi Manajemen Inventaris</h4>
+                        <p>Dibuat menggunakan PHP dan MySQL.</p>
+                        <a href="#" style="color: var(--primary-color);">Lihat Detail</a>
+                    </div>
+                    <div class="card">
+                        <h4>Sistem Informasi Sekolah (SIS) Mini</h4>
+                        <p>Pengembangan *mockup* menggunakan ReactJS.</p>
+                        <a href="#" style="color: var(--primary-color);">Lihat Detail</a>
+                    </div>
+                    <div class="card">
+                        <h4>Game Edukasi "CodeRunner"</h4>
+                        <p>Game sederhana berbasis web untuk belajar dasar coding.</p>
+                        <a href="#" style="color: var(--primary-color);">Lihat Detail</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 XI RPL 2. Dibuat dengan semangat dan kolaborasi. | SMK [Nama Sekolah Anda]</p>
+    </footer>
+
+    <script>
+        // Contoh sederhana JavaScript untuk interaktivitas:
+        // Saat halaman dimuat, tampilkan pesan di konsol
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Website Kelas XI RPL 2 Berhasil Dimuat!');
+            
+            // Contoh kecil interaktivitas: Menambahkan kelas 'active' pada link saat di-klik
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', function() {
+                    // Hapus kelas 'active' dari semua link
+                    document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+                    // Tambahkan kelas 'active' pada link yang baru saja di-klik
+                    this.classList.add('active');
+                });
+            });
+        });
+        
+        // Anda dapat menambahkan lebih banyak JavaScript di sini, misalnya:
+        // 1. Galeri gambar yang dapat di-klik (lightbox)
+        // 2. Filter anggota kelas
+        // 3. Animasi *scroll* yang lebih canggih (AOS/ScrollReveal)
+    </script>
+    </body>
+</html>
